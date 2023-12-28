@@ -1,9 +1,11 @@
+import { ToastContainer } from "react-toastify";
+
 interface TemplateProps {
     children: React.ReactNode,
     loading: boolean
 }
 
-export const Template: React.FC<TemplateProps> = ({ children, loading }: TemplateProps) => {
+export const Template: React.FC<TemplateProps> = ({ children, loading = false }: TemplateProps) => {
     return (
         <>
             <Header />
@@ -17,11 +19,17 @@ export const Template: React.FC<TemplateProps> = ({ children, loading }: Templat
                 }
             </div>
             <Footer />
+            <ToastContainer position="top-right"
+                            autoClose={8000}
+                            hideProgressBar={true}
+                            draggable={false}
+                            closeOnClick={true}
+                            pauseOnHover={true} />
         </>
     )
 }
 
-const Loading: React.FC = () => {
+export const Loading: React.FC = () => {
     return (
         <div role="status">
             <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
